@@ -1,12 +1,12 @@
-# Lorem Ipsum Project
+# Merge Mate Action Playground
 
 ## Overview
-This is a basic Lorem Ipsum project that generates placeholder text used for design mockups and other applications where the actual text is not yet available.
+This repository is now framed as a small playground for validating Merge Mate workflow behavior instead of a generic placeholder text project.
 
 ## Features
-- Generate random Lorem Ipsum text.
-- Specify the number of paragraphs, sentences, or words.
-- Simple and easy to use.
+- Trigger Merge Mate sync behavior from the default branch.
+- Keep a minimal repo layout for workflow experiments.
+- Document the repo as an action testbed rather than a lorem ipsum generator.
 
 ## Usage
 You can use this project in your web applications to easily generate placeholder text for layouts.
