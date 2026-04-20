@@ -72,3 +72,42 @@ on:
 ```
 
 That lets repository collaborators trigger the review job from PR discussion activity without changing the workflow definition.
+
+## Customization Notes
+
+Both workflows currently request these GitHub permissions:
+
+- `contents: write`
+- `pull-requests: write`
+- `id-token: write`
+
+Keep those permissions aligned with the requirements of the `gitkraken/merge-mate-action` version you are using. If you upgrade from `v0.2`, review the action documentation before changing scopes or inputs.
+
+The workflows also define concurrency groups so repeated runs for the same branch or pull request do not stack indefinitely:
+
+- sync jobs cancel any in-progress run for the same ref
+- review jobs keep prior runs active for the same pull request
+
+Adjust those defaults if your team needs stricter serialization or more aggressive cancellation behavior.
+
+## Repository Layout
+
+```text
+.
+|-- README.md
+|-- merge-mate-review.yml
+`-- merge-mate.yml
+```
+
+For production use, place the workflow files under `.github/workflows/`.
+
+## Maintenance
+
+- Update the branch trigger any time the repository default branch changes.
+- Rotate `GK_AI_PROVISIONER_TOKEN` according to your normal secret management policy.
+- Revisit workflow behavior when upgrading `gitkraken/merge-mate-action` from `v0.2`.
+- Test manual dispatch behavior after changing workflow inputs or permissions.
+
+## Contributing
+
+Open a pull request with proposed changes to the workflow examples or documentation. Keep README updates tied to the checked-in workflow files so the docs do not drift from the actual configuration.
